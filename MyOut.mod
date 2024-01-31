@@ -10,9 +10,9 @@ MODULE MyOut;
 	PROCEDURE WriteInt(x, n: INTEGER);
 		VAR i: INTEGER; a: ARRAY 16 OF CHAR; neg: BOOLEAN;
 	BEGIN
-		i := 0; neg := FALSE;
-		IF x < 0 THEN
-			neg := TRUE; DEC(n);
+		i := 0; neg := x < 0;
+		IF neg THEN
+			DEC(n);
 			IF x < -2147483647 THEN
 				a[i] := "8"; INC(i); x := 214748364
 			ELSE x := -x END
